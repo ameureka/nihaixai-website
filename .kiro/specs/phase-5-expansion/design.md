@@ -644,218 +644,494 @@ export async function POST(request: NextRequest) {
 
 ## 法律文档设计
 
-### 1. 隐私政策页面
+**说明：** 法律文档需要支持多语言（zh-CN, zh-TW, en），使用已完成的 i18n 基础架构。
+
+### 1. 隐私政策页面（多语言支持）
 
 ```typescript
-// app/privacy/page.tsx
+// app/[locale]/privacy/page.tsx
 import { Metadata } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import { prisma } from '@/lib/db';
 
-export const metadata: Metadata = {
-  title: '隐私政策 - 倪海厦内容网站',
-  robots: 'noindex, nofollow',
-};
+interface PrivacyPageProps {
+  params: { locale: string };
+}
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function generateMetadata({
+  params,
+}: PrivacyPageProps): Promise<Metadata> {
   return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common', 'legal'])),
-    },
+    title: getTitle(params.locale),
+    robots: 'noindex, nofollow',
   };
 }
 
-export default function PrivacyPage() {
-  const { t } = useTranslation('legal');
-  
+function getTitle(locale: string): string {
+  const titles: Record<string, string> = {
+    'zh-CN': '隐私政策 - 泥嗨侠',
+    'zh-TW': '隱私政策 - 泥嗨俠',
+    'en': 'Privacy Policy - Nihaixia',
+  };
+  return titles[locale] || titles['zh-CN'];
+}
+
+export default async function PrivacyPage({ params }: PrivacyPageProps) {
+  // 从数据库获取隐私政策内容（作为 Content 的一种类型）
+  const privacyContent = await prisma.content.findFirst({
+    where: {
+      type: 'STATIC_PAGE',
+      slug: 'privacy',
+      published: true,
+    },
+    include: {
+      translations: {
+        where: { locale: params.locale },
+      },
+    },
+  });
+
+  const translation = privacyContent?.translations[0];
+
+  if (!translation) {
+    return <div>内容未找到</div>;
+  }
+
   return (
     <main className="container mx-auto px-4 py-12 max-w-4xl">
-      <h1 className="text-4xl font-bold mb-4">{t('privacy.title')}</h1>
+      <h1 className="text-4xl font-bold mb-4">{translation.title}</h1>
       <p className="text-gray-600 mb-8">
-        {t('privacy.lastUpdated')}: 2024-11-07
+        {getLastUpdatedText(params.locale)}: {formatDate(privacyContent.updatedAt, params.locale)}
       </p>
-      
-      <div className="prose prose-lg max-w-none">
-        <section className="mb-8">
-          <h2>{t('privacy.section1.title')}</h2>
-          <p>{t('privacy.section1.content')}</p>
-        </section>
-        
-        <section className="mb-8">
-          <h2>{t('privacy.section2.title')}</h2>
-          <p>{t('privacy.section2.content')}</p>
-        </section>
-        
-        {/* 更多章节... */}
-      </div>
+
+      <div
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: translation.content }}
+      />
+    </main>
+  );
+}
+
+function getLastUpdatedText(locale: string): string {
+  const texts: Record<string, string> = {
+    'zh-CN': '最后更新',
+    'zh-TW': '最後更新',
+    'en': 'Last Updated',
+  };
+  return texts[locale] || texts['zh-CN'];
+}
+
+function formatDate(date: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }).format(date);
+}
+```
+
+### 2. 服务条款页面（多语言支持）
+
+```typescript
+// app/[locale]/terms/page.tsx
+import { Metadata } from 'next';
+import { prisma } from '@/lib/db';
+
+interface TermsPageProps {
+  params: { locale: string };
+}
+
+export async function generateMetadata({
+  params,
+}: TermsPageProps): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    'zh-CN': '服务条款 - 泥嗨侠',
+    'zh-TW': '服務條款 - 泥嗨俠',
+    'en': 'Terms of Service - Nihaixia',
+  };
+
+  return {
+    title: titles[params.locale] || titles['zh-CN'],
+    robots: 'noindex, nofollow',
+  };
+}
+
+export default async function TermsPage({ params }: TermsPageProps) {
+  const termsContent = await prisma.content.findFirst({
+    where: {
+      type: 'STATIC_PAGE',
+      slug: 'terms',
+      published: true,
+    },
+    include: {
+      translations: {
+        where: { locale: params.locale },
+      },
+    },
+  });
+
+  const translation = termsContent?.translations[0];
+
+  if (!translation) {
+    return <div>内容未找到</div>;
+  }
+
+  return (
+    <main className="container mx-auto px-4 py-12 max-w-4xl">
+      <h1 className="text-4xl font-bold mb-4">{translation.title}</h1>
+      <p className="text-gray-600 mb-8">
+        {getLastUpdatedText(params.locale)}: {formatDate(termsContent.updatedAt, params.locale)}
+      </p>
+
+      <div
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: translation.content }}
+      />
     </main>
   );
 }
 ```
 
-### 2. 法律文档模板
+### 3. 免责声明页面（多语言支持）
 
-```markdown
-# 隐私政策模板
+```typescript
+// app/[locale]/disclaimer/page.tsx
+import { Metadata } from 'next';
+import { prisma } from '@/lib/db';
 
-## 1. 信息收集
-我们收集以下类型的信息：
-- 账户信息（姓名、邮箱）
-- 使用数据（浏览记录、互动数据）
-- 技术数据（IP地址、浏览器类型）
+interface DisclaimerPageProps {
+  params: { locale: string };
+}
 
-## 2. 信息使用
-我们使用收集的信息用于：
-- 提供和改进服务
-- 个性化用户体验
-- 发送通知和更新
-- 分析网站使用情况
+export async function generateMetadata({
+  params,
+}: DisclaimerPageProps): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    'zh-CN': '免责声明 - 泥嗨侠',
+    'zh-TW': '免責聲明 - 泥嗨俠',
+    'en': 'Disclaimer - Nihaixia',
+  };
 
-## 3. 信息共享
-我们不会出售您的个人信息。我们可能与以下方共享信息：
-- 服务提供商（托管、分析）
-- 法律要求的情况
+  return {
+    title: titles[params.locale] || titles['zh-CN'],
+    robots: 'noindex, nofollow',
+  };
+}
 
-## 4. 数据安全
-我们采取以下措施保护您的数据：
-- HTTPS 加密传输
-- 数据库加密存储
-- 定期安全审计
+export default async function DisclaimerPage({ params }: DisclaimerPageProps) {
+  const disclaimerContent = await prisma.content.findFirst({
+    where: {
+      type: 'STATIC_PAGE',
+      slug: 'disclaimer',
+      published: true,
+    },
+    include: {
+      translations: {
+        where: { locale: params.locale },
+      },
+    },
+  });
 
-## 5. 您的权利
-您有权：
-- 访问您的个人信息
-- 更正不准确的信息
-- 删除您的账户和数据
-- 反对数据处理
+  const translation = disclaimerContent?.translations[0];
 
-## 6. Cookie 使用
-我们使用 Cookie 用于：
-- 保持登录状态
-- 记住语言偏好
-- 分析网站使用情况
+  if (!translation) {
+    return <div>内容未找到</div>;
+  }
 
-## 7. 联系我们
-如有隐私相关问题，请联系：
-- 邮箱：privacy@nihaixia.com
+  return (
+    <main className="container mx-auto px-4 py-12 max-w-4xl">
+      <h1 className="text-4xl font-bold mb-4">{translation.title}</h1>
+      <p className="text-gray-600 mb-8">
+        {getLastUpdatedText(params.locale)}: {formatDate(disclaimerContent.updatedAt, params.locale)}
+      </p>
+
+      <div
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: translation.content }}
+      />
+    </main>
+  );
+}
 ```
+
+### 4. 法律文档内容结构
+
+法律文档作为 `STATIC_PAGE` 类型的 Content 存储在数据库中，需要提供三种语言版本：
+
+**隐私政策内容大纲：**
+1. 信息收集（收集的个人信息类型）
+2. 信息使用（如何使用收集的信息）
+3. 信息共享（与第三方共享的情况）
+4. 数据安全（保护措施）
+5. 用户权利（访问、更正、删除权利）
+6. Cookie 使用（Cookie 类型和用途）
+7. 政策更新（更新通知机制）
+8. 联系方式（隐私问题联系方式）
+
+**服务条款内容大纲：**
+1. 服务说明（网站提供的服务）
+2. 用户责任（用户行为规范）
+3. 知识产权（内容版权声明）
+4. 免责条款（责任限制）
+5. 服务变更（服务修改和终止）
+6. 争议解决（法律适用和管辖）
+7. 条款更新（更新通知机制）
+8. 联系方式（法律问题联系方式）
+
+**免责声明内容大纲：**
+1. 医疗建议免责（内容仅供参考，不构成医疗建议）
+2. 内容准确性（不保证内容绝对准确）
+3. 外部链接（对第三方网站不承担责任）
+4. 使用风险（用户自行承担使用风险）
+5. 不保证条款（对服务可用性不作保证）
+6. 责任限制（损害赔偿限制）
 
 ---
 
 ## 关于页面设计
 
-### 页面布局
+**说明：** 关于页面需要支持多语言，内容通过 ContentTranslation 提供不同语言版本。
+
+### 页面布局（多语言支持）
 
 ```typescript
-// app/about/page.tsx
+// app/[locale]/about/page.tsx
 import { Metadata } from 'next';
+import { prisma } from '@/lib/db';
 import { Timeline } from '@/components/about/Timeline';
 import { Achievements } from '@/components/about/Achievements';
 import { Testimonials } from '@/components/about/Testimonials';
 import { PersonSchema } from '@/components/seo/PersonSchema';
 
-export const metadata: Metadata = {
-  title: '关于倪海厦 - 倪海厦内容网站',
-  description: '了解倪海厦老师的生平、学术贡献和对中医易学的影响',
-};
+interface AboutPageProps {
+  params: { locale: string };
+}
 
-export default function AboutPage() {
+export async function generateMetadata({
+  params,
+}: AboutPageProps): Promise<Metadata> {
+  const titles: Record<string, string> = {
+    'zh-CN': '关于倪海厦 - 泥嗨侠',
+    'zh-TW': '關於倪海廈 - 泥嗨俠',
+    'en': 'About Ni Haixia - Nihaixia',
+  };
+
+  const descriptions: Record<string, string> = {
+    'zh-CN': '了解倪海厦老师的生平、学术贡献和对中医易学的影响',
+    'zh-TW': '了解倪海廈老師的生平、學術貢獻和對中醫易學的影響',
+    'en': 'Learn about Master Ni Haixia\'s life, academic contributions, and influence on Traditional Chinese Medicine and I Ching',
+  };
+
+  return {
+    title: titles[params.locale] || titles['zh-CN'],
+    description: descriptions[params.locale] || descriptions['zh-CN'],
+  };
+}
+
+export default async function AboutPage({ params }: AboutPageProps) {
+  // 从数据库获取关于页面内容
+  const aboutContent = await prisma.content.findFirst({
+    where: {
+      type: 'STATIC_PAGE',
+      slug: 'about',
+      published: true,
+    },
+    include: {
+      translations: {
+        where: { locale: params.locale },
+      },
+    },
+  });
+
+  const translation = aboutContent?.translations[0];
+
+  if (!translation) {
+    return <div>内容未找到</div>;
+  }
+
+  // Person Schema 数据
+  const personNames: Record<string, string> = {
+    'zh-CN': '倪海厦',
+    'zh-TW': '倪海廈',
+    'en': 'Ni Haixia',
+  };
+
+  const personDescriptions: Record<string, string> = {
+    'zh-CN': '著名中医师、易学家、教育家',
+    'zh-TW': '著名中醫師、易學家、教育家',
+    'en': 'Renowned Traditional Chinese Medicine Practitioner, I Ching Scholar, and Educator',
+  };
+
   return (
     <>
       <PersonSchema
-        name="倪海厦"
-        description="著名中医师、易学家"
+        name={personNames[params.locale] || personNames['zh-CN']}
+        description={personDescriptions[params.locale] || personDescriptions['zh-CN']}
         birthDate="1954-01-01"
-        nationality="中国"
+        deathDate="2012-01-31"
+        nationality={params.locale === 'en' ? 'Chinese' : '中国'}
       />
-      
+
       <main>
         {/* Hero Section */}
         <section className="relative h-96 bg-gradient-to-r from-primary-600 to-primary-800">
           <div className="container mx-auto px-4 h-full flex items-center">
             <div className="text-white">
-              <h1 className="text-5xl font-bold mb-4">倪海厦</h1>
-              <p className="text-xl">著名中医师、易学家、教育家</p>
+              <h1 className="text-5xl font-bold mb-4">{translation.title}</h1>
+              <p className="text-xl">{translation.excerpt}</p>
             </div>
           </div>
         </section>
-        
-        {/* Biography */}
+
+        {/* Biography - 从 ContentTranslation 渲染 */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 max-w-4xl">
-            <h2 className="text-3xl font-bold mb-8">生平简介</h2>
-            <div className="prose prose-lg">
-              <p>
-                倪海厦（1954-2012），著名中医师、易学家，被誉为"当代中医大师"。
-                他致力于传承和发扬中医文化，培养了大量优秀的中医人才。
-              </p>
-              {/* 更多内容... */}
-            </div>
+            <div
+              className="prose prose-lg max-w-none"
+              dangerouslySetInnerHTML={{ __html: translation.content }}
+            />
           </div>
         </section>
-        
+
         {/* Timeline */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">重要事件</h2>
-            <Timeline />
+            <h2 className="text-3xl font-bold mb-12 text-center">
+              {getSectionTitle('timeline', params.locale)}
+            </h2>
+            <Timeline locale={params.locale} />
           </div>
         </section>
-        
+
         {/* Achievements */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">学术贡献</h2>
-            <Achievements />
+            <h2 className="text-3xl font-bold mb-12 text-center">
+              {getSectionTitle('achievements', params.locale)}
+            </h2>
+            <Achievements locale={params.locale} />
           </div>
         </section>
-        
+
         {/* Testimonials */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-12 text-center">学生评价</h2>
-            <Testimonials />
+            <h2 className="text-3xl font-bold mb-12 text-center">
+              {getSectionTitle('testimonials', params.locale)}
+            </h2>
+            <Testimonials locale={params.locale} />
           </div>
         </section>
       </main>
     </>
   );
 }
+
+function getSectionTitle(section: string, locale: string): string {
+  const titles: Record<string, Record<string, string>> = {
+    timeline: {
+      'zh-CN': '重要事件',
+      'zh-TW': '重要事件',
+      'en': 'Timeline',
+    },
+    achievements: {
+      'zh-CN': '学术贡献',
+      'zh-TW': '學術貢獻',
+      'en': 'Academic Achievements',
+    },
+    testimonials: {
+      'zh-CN': '学生评价',
+      'zh-TW': '學生評價',
+      'en': 'Testimonials',
+    },
+  };
+
+  return titles[section]?.[locale] || titles[section]?.['zh-CN'] || '';
+}
 ```
 
-### Timeline 组件
+### Timeline 组件（多语言支持）
 
 ```typescript
 // components/about/Timeline.tsx
-const events = [
+interface TimelineProps {
+  locale: string;
+}
+
+interface TimelineEvent {
+  year: string;
+  title: Record<string, string>;
+  description: Record<string, string>;
+}
+
+const events: TimelineEvent[] = [
   {
     year: '1954',
-    title: '出生',
-    description: '出生于台湾',
+    title: {
+      'zh-CN': '出生',
+      'zh-TW': '出生',
+      'en': 'Born',
+    },
+    description: {
+      'zh-CN': '出生于台湾',
+      'zh-TW': '出生於台灣',
+      'en': 'Born in Taiwan',
+    },
   },
   {
     year: '1976',
-    title: '开始学习中医',
-    description: '师从多位名师，系统学习中医理论',
+    title: {
+      'zh-CN': '开始学习中医',
+      'zh-TW': '開始學習中醫',
+      'en': 'Began Studying TCM',
+    },
+    description: {
+      'zh-CN': '师从多位名师，系统学习中医理论',
+      'zh-TW': '師從多位名師，系統學習中醫理論',
+      'en': 'Studied Traditional Chinese Medicine theory under renowned masters',
+    },
   },
   {
     year: '1985',
-    title: '创办诊所',
-    description: '在美国创办中医诊所，开始临床实践',
+    title: {
+      'zh-CN': '创办诊所',
+      'zh-TW': '創辦診所',
+      'en': 'Founded Clinic',
+    },
+    description: {
+      'zh-CN': '在美国创办中医诊所，开始临床实践',
+      'zh-TW': '在美國創辦中醫診所，開始臨床實踐',
+      'en': 'Founded a TCM clinic in the United States, began clinical practice',
+    },
   },
   {
     year: '2000',
-    title: '开始教学',
-    description: '创办汉唐中医学院，培养中医人才',
+    title: {
+      'zh-CN': '开始教学',
+      'zh-TW': '開始教學',
+      'en': 'Began Teaching',
+    },
+    description: {
+      'zh-CN': '创办汉唐中医学院，培养中医人才',
+      'zh-TW': '創辦漢唐中醫學院，培養中醫人才',
+      'en': 'Founded Hantang College of Traditional Chinese Medicine, trained TCM practitioners',
+    },
   },
   {
     year: '2012',
-    title: '逝世',
-    description: '因病逝世，享年58岁',
+    title: {
+      'zh-CN': '逝世',
+      'zh-TW': '逝世',
+      'en': 'Passed Away',
+    },
+    description: {
+      'zh-CN': '因病逝世，享年58岁',
+      'zh-TW': '因病逝世，享年58歲',
+      'en': 'Passed away at age 58',
+    },
   },
 ];
 
-export function Timeline() {
+export function Timeline({ locale }: TimelineProps) {
   return (
     <div className="max-w-4xl mx-auto">
       {events.map((event, index) => (
@@ -869,8 +1145,12 @@ export function Timeline() {
             )}
           </div>
           <div className="flex-1 pb-8">
-            <h3 className="text-xl font-bold mb-2">{event.title}</h3>
-            <p className="text-gray-600">{event.description}</p>
+            <h3 className="text-xl font-bold mb-2">
+              {event.title[locale] || event.title['zh-CN']}
+            </h3>
+            <p className="text-gray-600">
+              {event.description[locale] || event.description['zh-CN']}
+            </p>
           </div>
         </div>
       ))}
@@ -1122,7 +1402,7 @@ export default async function CostsPage() {
 
 ---
 
-**文档版本：** 1.0.0  
-**创建日期：** 2024-11-07  
-**最后更新：** 2024-11-07  
+**文档版本：** 1.1.0
+**创建日期：** 2024-11-07
+**最后更新：** 2025-01-07
 **文档状态：** ✅ 已完成
