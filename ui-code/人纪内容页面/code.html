@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>倪海厦医学 - 人纪</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&amp;family=Noto+Serif:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#144bb8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "Noto Sans SC", "sans-serif"],
+                        "sans": ["Noto Sans SC", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .font-display {
+            font-family: 'Noto Serif', 'Noto Sans SC', serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark">
+<div class="relative flex h-auto min-h-screen w-full flex-col font-sans group/design-root overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 dark:border-b-[#243047] px-4 sm:px-6 lg:px-10 py-3 sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-slate-800 dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] font-display">倪海厦医学</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-primary text-sm font-medium leading-normal" href="#">人纪</a>
+<a class="text-slate-600 dark:text-white/80 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">地纪</a>
+<a class="text-slate-600 dark:text-white/80 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">天纪</a>
+<a class="text-slate-600 dark:text-white/80 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">医案</a>
+<a class="text-slate-600 dark:text-white/80 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">YouTube频道</a>
+<a class="text-slate-600 dark:text-white/80 hover:text-primary dark:hover:text-primary text-sm font-medium leading-normal" href="#">关于我们</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 dark:text-[#93a5c8] flex border-none bg-black/5 dark:bg-[#243047] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-0 border-none bg-black/5 dark:bg-[#243047] focus:border-none h-full placeholder:text-slate-500 dark:placeholder:text-[#93a5c8] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="搜索医案、课程..." value=""/>
+</div>
+</label>
+</div>
+</header>
+<div class="flex-1 w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+<div class="flex flex-col lg:flex-row gap-8">
+<aside class="w-full lg:w-64 lg:sticky top-24 self-start">
+<div class="flex h-full flex-col justify-between bg-transparent dark:bg-transparent p-4 rounded-xl border border-black/10 dark:border-white/10">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col">
+<h1 class="text-slate-900 dark:text-white text-base font-medium leading-normal font-display">人纪</h1>
+<p class="text-slate-500 dark:text-[#93a5c8] text-sm font-normal leading-normal">The Human Canon</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/10 dark:bg-[#243047]" href="#">
+<span class="material-symbols-outlined text-primary dark:text-white">neurology</span>
+<p class="text-primary dark:text-white text-sm font-medium leading-normal">针灸大成</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-white">grass</span>
+<p class="text-slate-600 dark:text-white text-sm font-medium leading-normal">神农本草经</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-white">auto_stories</span>
+<p class="text-slate-600 dark:text-white text-sm font-medium leading-normal">黄帝内经</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-white">history_edu</span>
+<p class="text-slate-600 dark:text-white text-sm font-medium leading-normal">伤寒论</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5" href="#">
+<span class="material-symbols-outlined text-slate-600 dark:text-white">medical_services</span>
+<p class="text-slate-600 dark:text-white text-sm font-medium leading-normal">金匮要略</p>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1">
+<div class="flex min-w-72 flex-col gap-3 p-4">
+<p class="text-slate-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] font-display">《针灸大成》导读与实践</p>
+<p class="text-slate-500 dark:text-[#93a5c8] text-base font-normal leading-normal">深入了解倪海厦医师对《针灸大成》的独特见解与临床应用。</p>
+</div>
+<div class="p-4 @container">
+<div class="flex flex-col items-stretch justify-start rounded-lg @xl:flex-row @xl:items-start border border-black/10 dark:border-white/10 p-4 bg-white dark:bg-[#182030]/50">
+<div class="w-full @xl:w-1/3 bg-center bg-no-repeat aspect-video bg-cover rounded-lg" data-alt="An abstract illustration representing the flow of Qi in acupuncture meridians." style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAbbRaJyBbq142E6PH_zOn3lGtn_sRp4nRITtLQ-uRZjaa1mBLizy7bcNWz25t10DQ5BuKzMw0hBmUXSiGay9vhIPV7HF-Vv-Z4NEL_tEdACLzWUPGN2cpTb9W-7DgAkJEkwpQdsQrNw-XSPVMoy9xe_pgeov_Ysf1Dz7Xsu1tnWjE7AlhbzmreT2AwwTN0CbkSv0EnCGu86-dABSbnCss8VV1ptEOjWm-t4dYoMiLalQVOAe-tFWsxy7qKqFRYP5tLysbXvTx-w-A");'></div>
+<div class="flex w-full min-w-72 grow flex-col items-stretch justify-center gap-1 py-4 @xl:px-4 @xl:py-0">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] font-display">《针灸大成》简介</p>
+<div class="flex items-end gap-3 justify-between">
+<p class="text-slate-600 dark:text-[#93a5c8] text-base font-normal leading-normal">
+                                        《针灸大成》是明代针灸学家杨继洲的著作，全面总结了明代以前的针灸学成就。倪海厦医师将其作为人纪系列的核心教材之一，强调其在临床实践中的指导意义。
+                                    </p>
+</div>
+</div>
+</div>
+</div>
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 font-display">相关文章</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+<div class="flex flex-col gap-3 p-4 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#182030]/50">
+<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">临床实践：如何精准选穴</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-grow">倪海厦医师强调辨证论治，本文将结合多个医案，解析倪师在不同病症下选取穴位的思路与心得。</p>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-500">
+<span>2024-05-10</span>
+<div class="flex gap-2">
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full">临床实践</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full">理论解析</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3 p-4 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#182030]/50">
+<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">倪师医案分享：针药并治</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 flex-grow">探讨倪海厦医师如何将针灸与经方结合，治疗疑难杂症。通过具体案例，展示针药并用的强大疗效。</p>
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-500">
+<span>2024-04-22</span>
+<div class="flex gap-2">
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full">医案分析</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full">针药结合</span>
+</div>
+</div>
+</div>
+</div>
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 font-display">视频讲解</h2>
+<div class="p-4">
+<div class="rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#182030]/50 p-4">
+<div class="aspect-video w-full mb-4">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="w-full h-full rounded-lg" frameborder="0" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player"></iframe>
+</div>
+<h3 class="font-display text-lg font-bold text-slate-900 dark:text-white">倪师讲解十二经络流注</h3>
+<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">视频深入浅出地介绍了十二经络的循行路线与时间规律，是学习针灸的必看内容。</p>
+<button class="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary/50">
+<span>观看更多视频讲解</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<h2 class="text-slate-900 dark:text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5 font-display">核心概念索引</h2>
+<div class="p-4">
+<div class="p-4 rounded-xl border border-black/10 dark:border-white/10 bg-white dark:bg-[#182030]/50">
+<ul class="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3 list-inside list-disc text-primary">
+<li><a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary/90" href="#">补泻手法</a></li>
+<li><a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary/90" href="#">主要穴位详解</a></li>
+<li><a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary/90" href="#">脏腑辨证理论</a></li>
+<li><a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary/90" href="#">子午流注针法</a></li>
+<li><a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary/90" href="#">奇经八脉</a></li>
+<li><a class="text-slate-700 dark:text-slate-300 hover:text-primary dark:hover:text-primary/90" href="#">针灸禁忌</a></li>
+</ul>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</div>
+</body></html>

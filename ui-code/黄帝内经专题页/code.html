@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>倪海厦解读《黄帝内经》- 《灵枢·九针十二原》深度解析</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700;900&amp;family=Noto+Sans+SC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#144bb8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif SC", "serif"],
+                        "sans": ["Noto Sans SC", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans">
+<div class="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-white/10 dark:border-b-[#243047] px-4 sm:px-8 lg:px-10 py-3 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-black dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-black dark:text-white text-lg font-bold font-display leading-tight tracking-[-0.015em]">倪海厦学术</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-black/80 dark:text-white/80 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal" href="#">首页</a>
+<a class="text-black/80 dark:text-white/80 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal" href="#">天纪</a>
+<a class="text-black/80 dark:text-white/80 hover:text-primary dark:hover:text-white text-sm font-medium leading-normal" href="#">地纪</a>
+<a class="text-primary dark:text-white text-sm font-bold leading-normal" href="#">人纪</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4 md:gap-8">
+<label class="hidden sm:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#93a5c8] flex border-none bg-black/5 dark:bg-[#243047] items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-black dark:text-white focus:outline-0 focus:ring-0 border-none bg-black/5 dark:bg-[#243047] focus:border-none h-full placeholder:text-black/50 dark:placeholder:text-[#93a5c8] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="搜索..." value=""/>
+</div>
+</label>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">订阅</span>
+</button>
+</div>
+</header>
+<!-- Main Content Layout -->
+<div class="flex flex-1 justify-center px-4 sm:px-8 lg:px-10 py-5">
+<div class="flex w-full max-w-screen-xl gap-8">
+<!-- Left Sidebar Navigation -->
+<aside class="hidden lg:flex w-64 flex-col flex-shrink-0">
+<div class="sticky top-24 flex h-full flex-col justify-between bg-transparent p-4">
+<div class="flex flex-col gap-4">
+<div class="flex flex-col">
+<h1 class="text-black dark:text-white text-base font-medium leading-normal font-display">内容索引</h1>
+<p class="text-black/60 dark:text-[#93a5c8] text-sm font-normal leading-normal">快速查找章节</p>
+</div>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-black/5 dark:bg-[#243047]" href="#">
+<span class="material-symbols-outlined text-primary dark:text-white" style="font-size: 20px;">import_contacts</span>
+<p class="text-primary dark:text-white text-sm font-bold leading-normal">黄帝内经</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-slate-800/60 transition-colors" href="#">
+<span class="material-symbols-outlined text-black/70 dark:text-white/70" style="font-size: 20px;">favorite</span>
+<p class="text-black dark:text-white text-sm font-medium leading-normal">伤寒杂病论</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-slate-800/60 transition-colors" href="#">
+<span class="material-symbols-outlined text-black/70 dark:text-white/70" style="font-size: 20px;">eco</span>
+<p class="text-black dark:text-white text-sm font-medium leading-normal">神农本草经</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-slate-800/60 transition-colors" href="#">
+<span class="material-symbols-outlined text-black/70 dark:text-white/70" style="font-size: 20px;">track_changes</span>
+<p class="text-black dark:text-white text-sm font-medium leading-normal">针灸大成</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-black/5 dark:hover:bg-slate-800/60 transition-colors" href="#">
+<span class="material-symbols-outlined text-black/70 dark:text-white/70" style="font-size: 20px;">description</span>
+<p class="text-black dark:text-white text-sm font-medium leading-normal">医案分享</p>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Right Main Content Area -->
+<main class="flex-1 min-w-0">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 p-4">
+<a class="text-black/60 dark:text-[#93a5c8] hover:text-primary text-sm font-medium leading-normal" href="#">首页</a>
+<span class="text-black/60 dark:text-[#93a5c8] text-sm font-medium leading-normal">/</span>
+<a class="text-black/60 dark:text-[#93a5c8] hover:text-primary text-sm font-medium leading-normal" href="#">人纪</a>
+<span class="text-black/60 dark:text-[#93a5c8] text-sm font-medium leading-normal">/</span>
+<a class="text-black/60 dark:text-[#93a5c8] hover:text-primary text-sm font-medium leading-normal" href="#">黄帝内经</a>
+<span class="text-black/60 dark:text-[#93a5c8] text-sm font-medium leading-normal">/</span>
+<span class="text-black dark:text-white text-sm font-medium leading-normal">灵枢·九针十二原</span>
+</div>
+<!-- Page Heading -->
+<div class="flex flex-wrap justify-between gap-3 p-4">
+<div class="flex min-w-72 flex-col gap-3">
+<h1 class="text-black dark:text-white text-4xl font-black font-display leading-tight tracking-[-0.033em]">《灵枢·九针十二原》深度解析</h1>
+<p class="text-black/70 dark:text-[#93a5c8] text-base font-normal leading-normal">探索倪海厦对黄帝内经核心思想的阐释</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 sticky top-[61px] bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm z-40">
+<div class="flex border-b border-black/10 dark:border-[#344465] px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-black dark:text-white pb-[13px] pt-4" href="#">
+<p class="text-black dark:text-white text-sm font-bold leading-normal tracking-[0.015em]">原文精选</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-black/60 dark:text-[#93a5c8] hover:text-black dark:hover:text-white pb-[13px] pt-4 transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">倪师批注</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-black/60 dark:text-[#93a5c8] hover:text-black dark:hover:text-white pb-[13px] pt-4 transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">现代解读</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-black/60 dark:text-[#93a5c8] hover:text-black dark:hover:text-white pb-[13px] pt-4 transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">配套视频</p>
+</a>
+</div>
+</div>
+<!-- Content Block -->
+<div class="p-4 md:p-6 space-y-8">
+<article class="prose prose-lg dark:prose-invert max-w-none text-black/90 dark:text-white/90 leading-relaxed font-sans">
+<h3 class="font-display font-bold text-black dark:text-white">第一节：九针之名，各不同形</h3>
+<p>“九针之名，各不同形。一曰鑱针，长一寸六分。二曰员针，长一寸六分。三曰鍉针，长三寸半。四曰锋针，长一寸六分。五曰铍针，长四寸，广二分半。六曰员利针，长一寸六分。七曰毫针，长三寸六分。八曰长针，长七寸。九曰大针，长四寸。”</p>
+<p>黄帝曰：夫九针为之也，各有所宜，以应九变。久风湿痹，筋挛骨痛，可用长针、大针。病在肌肤，可用员针、鍉针。病在脉，气少，不足以实，可用毫针补之。病在经络，可用锋针出血。总之，因病施治，针具选择至关重要。</p>
+<blockquote>
+<p class="font-display">“知其要者，一言而终，不知其要，流散无穷。” —— 倪海厦</p>
+</blockquote>
+<p>倪师强调，学习中医，无论是针灸还是方剂，都必须抓住核心。九针之用，关键在于辨证。医生需明晰病位之深浅、病性之虚实，方能选用最合适的针具，达到“一针见效”的目的。例如，对于深层的风湿顽痹，非长针、大针不能及也；而对于浅表的皮肤病，若误用长针，则可能伤及正气。</p>
+</article>
+<!-- CTA Block -->
+<div class="flex flex-col md:flex-row items-center gap-6 p-6 rounded-xl bg-black/5 dark:bg-primary/20 border border-black/10 dark:border-primary/30">
+<div class="flex-shrink-0">
+<img alt="An abstract, flowing blue and purple gradient representing energy flows in traditional Chinese medicine." class="w-24 h-24 object-cover rounded-full border-4 border-white dark:border-background-dark shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDR5bfRbAsMqY68T74Xb4PzjwWP5_uU_3imlFxvNUZ0SfGdd-L_5T-QezLnxxDmxpDg9KwRBM75DcfYUUtzihuXrxAZp86hRodmjbIEO0H2aY5UxtUBHJvd5tcFZqcmDKRB0beS0PCo9pluBEvo3M1_3Nk5EsjyTE_M42cSKWkaKEJwVj3ONX26QmN-J7y5QGys54h_u8u96tml5DwLBm-J7LFpDM__-90aIXPCFpd3PhxWyg5Jtb2757AsFYTGFO0csHVGw-RWiTA"/>
+</div>
+<div class="flex-1 text-center md:text-left">
+<h4 class="text-black dark:text-white text-xl font-bold font-display">订阅倪师频道，深入学习中医智慧</h4>
+<p class="text-black/70 dark:text-white/80 mt-2">观看更多关于《黄帝内经》的视频讲解，掌握中医理论的精髓，开启您的健康养生之旅。</p>
+</div>
+<a class="flex-shrink-0" href="#">
+<button class="flex min-w-[120px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-opacity">
+<span class="truncate">立即前往</span>
+</button>
+</a>
+</div>
+<!-- SEO Tags -->
+<div class="pt-4 border-t border-black/10 dark:border-white/10">
+<h4 class="text-black/80 dark:text-white/80 text-sm font-bold mb-3">相关标签</h4>
+<div class="flex flex-wrap gap-2">
+<a class="px-3 py-1 text-xs font-medium rounded-full bg-black/10 dark:bg-white/10 text-black/70 dark:text-white/70 hover:bg-primary/80 hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors" href="#">倪海厦</a>
+<a class="px-3 py-1 text-xs font-medium rounded-full bg-black/10 dark:bg-white/10 text-black/70 dark:text-white/70 hover:bg-primary/80 hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors" href="#">黄帝内经</a>
+<a class="px-3 py-1 text-xs font-medium rounded-full bg-black/10 dark:bg-white/10 text-black/70 dark:text-white/70 hover:bg-primary/80 hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors" href="#">中医理论</a>
+<a class="px-3 py-1 text-xs font-medium rounded-full bg-black/10 dark:bg-white/10 text-black/70 dark:text-white/70 hover:bg-primary/80 hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors" href="#">针灸</a>
+<a class="px-3 py-1 text-xs font-medium rounded-full bg-black/10 dark:bg-white/10 text-black/70 dark:text-white/70 hover:bg-primary/80 hover:text-white dark:hover:bg-primary dark:hover:text-white transition-colors" href="#">中医养生</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</div>
+</body></html>

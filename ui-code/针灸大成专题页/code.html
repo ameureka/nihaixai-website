@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>倪海厦《针灸大成》解读</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#144bb8",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#111722",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "sans-serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-sans">
+<div class="relative flex min-h-screen w-full">
+<!-- SideNavBar -->
+<aside class="sticky top-0 h-screen w-64 flex-shrink-0 flex-col justify-between bg-[#111722] p-4 hidden lg:flex">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 p-2">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Portrait of Ni Haixia" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQTkrdlpMf4VFshKFQZFhoC6Kfw7RWGCO5UNSyT_I2jecNwdz6FY_ZLGXwnMgm19TsigE8aWQXbZorXtkt2V_OmZRpBYOzLik8KefFjga5ZDH9Py0MXqw-linpBDqvAoenEig9mQN_kIAEYOpsYe5hg6sVmpEKmdiT50V4eeXuEPuLuDsowqy3YJAlhibZdbX7-M5OkN9q4YLGilKahUD80numWy8I00gJ16A2iMdVianW_g7JmdGfsJLDiwUma8n_t3xbAtFY4F8");'></div>
+<div class="flex flex-col">
+<h1 class="text-white text-base font-medium leading-normal font-display">倪海厦</h1>
+<p class="text-[#93a5c8] text-sm font-normal leading-normal">经方大师</p>
+</div>
+</div>
+<div class="relative px-2">
+<input class="w-full rounded-lg border-none bg-[#243047] py-2 pl-9 pr-3 text-sm text-white placeholder:text-[#93a5c8] focus:ring-2 focus:ring-primary" placeholder="搜索章节..." type="search"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-[#93a5c8]">search</span>
+</div>
+<nav class="flex flex-col gap-1 mt-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-[#243047] transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">spark</span>
+<p class="text-white text-sm font-medium leading-normal">针灸起源</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#243047]/60 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white">share</span>
+<p class="text-white text-sm font-medium leading-normal">经络学说</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#243047]/60 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white">pin_drop</span>
+<p class="text-white text-sm font-medium leading-normal">特定穴位应用</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#243047]/60 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white">monitoring</span>
+<p class="text-white text-sm font-medium leading-normal">诊断方法</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#243047]/60 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white">menu_book</span>
+<p class="text-white text-sm font-medium leading-normal">治疗原则</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#243047]/60 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white">description</span>
+<p class="text-white text-sm font-medium leading-normal">临床案例</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#243047]/60 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white">trending_up</span>
+<p class="text-white text-sm font-medium leading-normal">补泻手法</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-[#243047]/60 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-white">error</span>
+<p class="text-white text-sm font-medium leading-normal">禁忌与注意事项</p>
+</a>
+</nav>
+</div>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="truncate">返回首页</span>
+</button>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 p-4 sm:p-6 lg:p-10">
+<div class="mx-auto max-w-4xl">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap items-center gap-2 pb-4">
+<a class="text-[#93a5c8] text-sm font-medium leading-normal hover:text-white" href="#">首页</a>
+<span class="text-[#93a5c8] text-sm font-medium leading-normal">/</span>
+<a class="text-[#93a5c8] text-sm font-medium leading-normal hover:text-white" href="#">针灸大成</a>
+<span class="text-[#93a5c8] text-sm font-medium leading-normal">/</span>
+<span class="text-white text-sm font-medium leading-normal">第一章: 针灸起源</span>
+</div>
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between gap-3 py-4">
+<div class="flex flex-col gap-2">
+<h1 class="text-white text-4xl font-black leading-tight tracking-tight font-display">第一章: 针灸起源</h1>
+<p class="text-[#93a5c8] text-base font-normal leading-normal">探索针灸的古老渊源与倪师的独到见解。</p>
+</div>
+</div>
+<!-- Tabs -->
+<div class="pb-3 pt-6">
+<div class="flex border-b border-[#344465] gap-4 sm:gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-primary text-white pb-3 pt-1 px-2 sm:px-4 transition-colors" href="#">
+<p class="text-white text-sm font-bold leading-normal tracking-[0.015em]">倪师讲解</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#93a5c8] pb-3 pt-1 px-2 sm:px-4 hover:border-b-white/50 hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">原文解读</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-b-transparent text-[#93a5c8] pb-3 pt-1 px-2 sm:px-4 hover:border-b-white/50 hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">临床应用</p>
+</a>
+</div>
+</div>
+<!-- Content Body -->
+<div class="space-y-10 py-6">
+<!-- BodyText -->
+<p class="text-white/90 text-base font-normal leading-relaxed">
+                        在本章节中，倪海厦老师深入剖析了《针灸大成》的起源章节，不仅追溯了针灸的历史脉络，更结合其深厚的临床经验，揭示了古人智慧与现代应用的契合点。学习本章是理解倪师针灸思想体系的基石。
+                    </p>
+<!-- Video Player Card -->
+<div class="space-y-4">
+<h2 class="text-2xl font-bold text-white font-display">相关视频讲解</h2>
+<div class="rounded-xl overflow-hidden bg-[#1a2233]">
+<div class="aspect-video bg-black flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="Video thumbnail for Ni Haixia's lecture on the origin of acupuncture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEdF65lVsvmIFM1ss-75LyDeM6lU501RdJ4uyNcI5Z6WFd1ZMwaJcefhHmrdAdyyVK3neM0QxYXQmnHAU5z6UZnQlef_k8JhXQBTYNHVNps1wWZbOzqdNyT-0HkfIHD0yncNqhlCyogm2NPm7s1ExmwCVeJ7TlINczrNBoSvhQ5X51FgWriWQgvC9-ntIWm0whfoUvotsXegpNxTuGEZNxRGTUUIU1Hcu15w2fmigSP5zLNuUeGyC5nfGsSOkXn9ItmMyZHj7GQI0"/>
+</div>
+<div class="p-4 sm:p-6">
+<h3 class="text-lg font-bold text-white">【天纪】倪海厦-针灸篇-起源</h3>
+<p class="text-[#93a5c8] mt-1 text-sm">观看倪师亲自讲解针灸的起源，从历史和哲学的角度理解这门古老技艺的精髓。</p>
+</div>
+</div>
+</div>
+<!-- Related Articles -->
+<div class="space-y-4">
+<h2 class="text-2xl font-bold text-white font-display">相关文章</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="bg-[#1a2233] rounded-xl p-4 sm:p-6 flex flex-col justify-between hover:ring-2 hover:ring-primary/50 transition-all">
+<div>
+<h3 class="font-bold text-white text-base">如何准确找到足三里穴</h3>
+<p class="text-sm text-[#93a5c8] mt-2 line-clamp-2">倪师强调，足三里是胃经合穴，为全身的强壮要穴，其定位的准确性直接关系到疗效。</p>
+</div>
+<a class="text-sm font-bold text-primary mt-4 self-start hover:underline" href="#">阅读更多 →</a>
+</div>
+<div class="bg-[#1a2233] rounded-xl p-4 sm:p-6 flex flex-col justify-between hover:ring-2 hover:ring-primary/50 transition-all">
+<div>
+<h3 class="font-bold text-white text-base">倪海厦谈鬼门十三针</h3>
+<p class="text-sm text-[#93a5c8] mt-2 line-clamp-2">深入了解传说中的鬼门十三针，倪师是如何在临床中运用这些特殊穴位来治疗情志疾病的。</p>
+</div>
+<a class="text-sm font-bold text-primary mt-4 self-start hover:underline" href="#">阅读更多 →</a>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="flex justify-between items-center border-t border-[#344465] pt-6 mt-8">
+<a class="flex items-center gap-2 text-[#93a5c8] hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_back</span>
+<span class="text-sm font-medium">上一章: 序言</span>
+</a>
+<a class="flex items-center gap-2 text-[#93a5c8] hover:text-white transition-colors" href="#">
+<span class="text-sm font-medium">下一章: 经络学说</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
